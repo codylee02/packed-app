@@ -1,0 +1,15 @@
+{
+    "version": 2,
+    "name": "packed-app",
+    "alias": "codylee02-packed-app",
+    "routes": [
+        {
+          "src": "^/static/(.*)",
+          "dest": "/static/$1"
+        },
+        {
+          "src": ".*",
+          "dest": "/index.html"
+        }
+    ]
+  }
