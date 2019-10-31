@@ -1,0 +1,15 @@
+.ListName__title {
+  margin: 0.1em;
+  padding: 0.1em;
+  text-align: left;
+  list-style: none;
+  border: 1px solid black;
+  border-radius: 0.1em;
+  font-size: 1.5em;
+}
+
+.ListName__count {
+  font-size: 0.7em;
+  font-style: italic;
+  color: grey;
+}
