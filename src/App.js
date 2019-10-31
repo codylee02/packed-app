@@ -5,13 +5,21 @@ import STORE from "./STORE";
 import "./App.css";
 
 import Nav from "./Nav/Nav";
-import Lists from "./Lists/Lists";
+import PackingListsTab from "./PackingListsTab/PackingListsTab";
+import TemplatesTab from "./TemplatesTab/TemplatesTab";
 
 function App() {
   return (
     <main className="App">
       <Route path="/" component={Nav} />
-      <Route path="/lists" component={() => <Lists STORE={STORE} />} />
+      <Route
+        path="/lists"
+        component={() => <PackingListsTab STORE={STORE} />}
+      />
+      <Route
+        path="/templates"
+        component={() => <TemplatesTab STORE={STORE} />}
+      />
     </main>
   );
 }

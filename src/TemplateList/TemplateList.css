@@ -1,14 +1,17 @@
-.ListName__title {
+.template-name {
+  display: flex;
+  justify-content: space-between;
   margin: 0.1em;
-  padding: 0.1em;
+  padding: 0.2em;
   text-align: left;
   list-style: none;
   border: 1px solid black;
   border-radius: 0.1em;
   font-size: 1.5em;
+  align-items: center;
 }
 
-.ListName__count {
+.template-name__count {
   font-size: 0.7em;
   font-style: italic;
   color: grey;

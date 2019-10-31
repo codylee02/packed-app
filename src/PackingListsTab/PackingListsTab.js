@@ -1,13 +1,18 @@
 import React from "react";
 
-import "./Lists.css";
-import ListName from "../ListName/ListName";
+import "./PackingListsTab.css";
+import PackingLists from "../PackingLists/PackingLists";
 
 export default class Lists extends React.Component {
   render() {
     const lists = this.props.STORE.lists
       ? this.props.STORE.lists.map((listName, key) => (
-          <ListName {...listName} STORE={this.props.STORE} key={key} />
+          <PackingLists
+            className="list-name"
+            {...listName}
+            STORE={this.props.STORE}
+            key={key}
+          />
         ))
       : null;
 
