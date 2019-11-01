@@ -5,6 +5,7 @@ import STORE from "./STORE";
 import "./App.css";
 
 import Nav from "./Nav/Nav";
+import Title from "./Title/Title";
 import PackingListsTab from "./PackingListsTab/PackingListsTab";
 import TemplatesTab from "./TemplatesTab/TemplatesTab";
 
@@ -19,6 +20,10 @@ function App() {
       <Route
         path="/templates"
         component={() => <TemplatesTab STORE={STORE} />}
+      />
+      <Route
+        path={["/list/:id", "/template/:id"]}
+        component={props => <Title {...props} STORE={STORE} />}
       />
     </main>
   );

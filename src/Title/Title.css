@@ -1,0 +1,10 @@
+.title {
+  margin: 0;
+  padding: 0 5%;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: gray;
+  text-align: left;
+  color: white;
+}

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import "./TemplateList.css";
 
@@ -18,10 +19,12 @@ export default class TemplateList extends React.Component {
     };
 
     return (
-      <li className="template-name">
-        <div className="template-name__title">{this.props.name}</div>
-        <div className="template-name__count">{totalItems(templateId)}</div>
-      </li>
+      <Link to={`/template/${templateId}`} className="template-name__link">
+        <li className="template-name">
+          <div className="template-name__title">{this.props.name}</div>
+          <div className="template-name__count">{totalItems(templateId)}</div>
+        </li>
+      </Link>
     );
   }
 }

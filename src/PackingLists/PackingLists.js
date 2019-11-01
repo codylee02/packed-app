@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import "./PackingLists.css";
 
@@ -32,12 +33,14 @@ export default class PackingLists extends React.Component {
     };
 
     return (
-      <li className="list-name">
-        <div className="list-name__title">{this.props.name}</div>
-        <div className="list-name__count">
-          {packedItems(listId)}/{totalItems(listId)}
-        </div>
-      </li>
+      <Link to={`/list/${listId}`} className="list-name__link">
+        <li className="list-name">
+          <div className="list-name__title">{this.props.name}</div>
+          <div className="list-name__count">
+            {packedItems(listId)}/{totalItems(listId)}
+          </div>
+        </li>
+      </Link>
     );
   }
 }

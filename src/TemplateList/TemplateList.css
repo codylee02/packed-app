@@ -16,3 +16,8 @@
   font-style: italic;
   color: grey;
 }
+
+.template-name__link {
+  text-decoration: none;
+  color: inherit;
+}
