@@ -5,9 +5,10 @@ import STORE from "./STORE";
 import "./App.css";
 
 import Nav from "./Nav/Nav";
-import Title from "./Title/Title";
 import PackingListsTab from "./PackingListsTab/PackingListsTab";
 import TemplatesTab from "./TemplatesTab/TemplatesTab";
+import List from "./List/List";
+import Template from "./Template/Template";
 
 function App() {
   return (
@@ -21,9 +22,28 @@ function App() {
         path="/templates"
         component={() => <TemplatesTab STORE={STORE} />}
       />
+
       <Route
-        path={["/list/:id", "/template/:id"]}
-        component={props => <Title {...props} STORE={STORE} />}
+        path={"/list/:id"}
+        component={props => (
+          <List
+            listType="lists"
+            {...props}
+            STORE={STORE}
+            itemsFrom={"listItems"}
+          />
+        )}
+      />
+      <Route
+        path={"/template/:id"}
+        component={props => (
+          <Template
+            listType="templates"
+            {...props}
+            STORE={STORE}
+            itemsFrom={"templateItems"}
+          />
+        )}
       />
     </main>
   );
