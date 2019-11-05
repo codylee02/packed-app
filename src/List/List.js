@@ -37,7 +37,7 @@ export default class List extends React.Component {
           <li className="items">
             <div className="item-name">
               <select>
-                <option>Add Template...</option>
+                <option>Add Items From Template...</option>
                 <option>Overnight Trip</option>
                 <option>Daily Necessities</option>
                 <option>Photography Gig-Basic Package</option>
