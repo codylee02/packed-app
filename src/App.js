@@ -1,5 +1,5 @@
 import React from "react";
-import { Route } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import STORE from "./STORE";
 
 import "./App.css";
@@ -9,11 +9,20 @@ import PackingListsTab from "./PackingListsTab/PackingListsTab";
 import TemplatesTab from "./TemplatesTab/TemplatesTab";
 import List from "./List/List";
 import Template from "./Template/Template";
+import LandingPage from "./LandingPage/LandingPage";
+import RegistrationPage from "./RegistrationPage/RegistrationPage";
 
 function App() {
   return (
     <main className="App">
-      <Route path="/" component={Nav} />
+      <Switch>
+        <Route path="/lists" component={Nav} />
+        <Route path="/list" component={Nav} />
+        <Route path="/templates" component={Nav} />
+        <Route path="/template" component={Nav} />
+      </Switch>
+      <Route exact path="/" component={LandingPage} />
+      <Route exact path="/registration-page" component={RegistrationPage} />
       <Route
         path="/lists"
         component={() => <PackingListsTab STORE={STORE} />}
