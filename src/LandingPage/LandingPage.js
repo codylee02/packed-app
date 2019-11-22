@@ -43,7 +43,9 @@ export default class LandingPage extends React.Component {
         <section>
           <h2>Sign Up</h2>
           <form className="sign-up-form">
-            First Name: <input type="text" name="first-name"></input>
+            <label>
+              First Name:<input type="text" name="first-name"></input>
+            </label>
             <br />
             Last Name: <input type="text" name="last-name"></input>
             <br />
