@@ -2,6 +2,7 @@ import React from "react";
 
 import Title from "../Title/Title";
 import ListItems from "../ListItems/ListItems";
+import listApiService from "../services/list-api-service";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
@@ -9,30 +10,61 @@ import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import "./List.css";
 
 export default class List extends React.Component {
-  render() {
-    const itemsInList = this.props.STORE.listItems.filter(
-      item => item.listId === Number(this.props.match.params.id)
-    );
+  constructor(props) {
+    super(props);
+    this.state = {
+      error: null,
+      listItems: [],
+      listName: null
+    };
+  }
 
-    const items = itemsInList.map((item, key) => (
-      <ListItems item={{ ...item }} STORE={this.props.STORE} key={key} />
+  handleSubmit = ev => {
+    ev.preventDefault();
+    const { new_item } = ev.target;
+    const name = new_item.value;
+    const listId = this.props.match.params.id;
+
+    listApiService
+      .postNewListItem(name, listId)
+      .then(name =>
+        this.setState({ listItems: [...this.state.listItems, name] })
+      )
+      .then(() => {
+        new_item.value = "";
+      })
+      .catch(res => this.setSate({ error: res.error }));
+  };
+
+  componentDidMount() {
+    const listId = this.props.match.params.id;
+
+    listApiService
+      .getListItems(listId)
+      .then(listItems => this.setState({ ...listItems }));
+  }
+
+  render() {
+    const items = this.state.listItems.map((item, key) => (
+      <ListItems item={{ ...item }} key={key} />
     ));
 
     return (
       <div>
-        <Title
-          listsId={this.props.match.params.id}
-          listType={this.props.listType}
-          STORE={this.props.STORE}
-        />
+        <Title listName={this.state.listName} listType={"list"} />
         <ul className="list">
           <li className="items">
-            <div className="item-name">
-              <input type="text" placeholder="New Item..."></input>
-            </div>
-            <div className="item-control-bar">
-              <FontAwesomeIcon icon={faPlus} />
-            </div>
+            <form className="item-name" onSubmit={this.handleSubmit}>
+              <input
+                type="text"
+                name="new_item"
+                placeholder="New Item..."
+              ></input>
+
+              <button className="submit-button">
+                <FontAwesomeIcon icon={faPlus} />
+              </button>
+            </form>
           </li>
           <li className="items">
             <div className="item-name">

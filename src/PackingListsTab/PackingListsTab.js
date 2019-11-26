@@ -2,20 +2,60 @@ import React from "react";
 
 import "./PackingListsTab.css";
 import PackingLists from "../PackingLists/PackingLists";
+import listApiService from "../services/list-api-service";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 export default class Lists extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      error: null,
+      lists: []
+    };
+  }
+
+  handleSubmit = ev => {
+    ev.preventDefault();
+    const { new_list } = ev.target;
+    const name = new_list.value;
+    this.setState({ error: null });
+
+    listApiService
+      .postNewList(name)
+      .then(name => this.setState({ lists: [...this.state.lists, name] }))
+      .then(() => {
+        new_list.value = "";
+      })
+      .catch(res => this.setState({ error: res.error }));
+  };
+
+  componentDidMount() {
+    listApiService.getLists().then(lists => this.setState({ lists: lists }));
+  }
   render() {
-    const lists = this.props.STORE.lists
-      ? this.props.STORE.lists.map((listName, key) => (
-          <PackingLists
-            className="list-name"
-            {...listName}
-            STORE={this.props.STORE}
-            key={key}
-          />
+    const lists = this.state.lists
+      ? this.state.lists.map((list, key) => (
+          <PackingLists className="list-name" {...list} key={key} />
         ))
       : null;
 
-    return <ul className="Lists">{lists}</ul>;
+    return (
+      <ul className="Lists">
+        {lists}
+        <li className="list-name new-item">
+          <form className="new-list-form" onSubmit={this.handleSubmit}>
+            <input
+              name="new_list"
+              type="text"
+              placeholder="New List..."
+            ></input>
+            <button type="submit" className="new-list">
+              <FontAwesomeIcon icon={faPlus} />
+            </button>
+          </form>
+        </li>
+      </ul>
+    );
   }
 }
