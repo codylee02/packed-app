@@ -52,6 +52,15 @@ export default class List extends React.Component {
       );
   };
 
+  handleDeleteListItem = itemId => {
+    const listId = this.props.match.params.id;
+    listApiService.deleteListItem(listId, itemId).then(() => {
+      this.setState({
+        listItems: this.state.listItems.filter(item => item.id !== itemId)
+      });
+    });
+  };
+
   componentDidMount() {
     const listId = this.props.match.params.id;
     templateApiService
@@ -65,7 +74,11 @@ export default class List extends React.Component {
 
   render() {
     const items = this.state.listItems.map((item, key) => (
-      <ListItems item={{ ...item }} key={key} />
+      <ListItems
+        handleDeleteListItem={this.handleDeleteListItem}
+        item={{ ...item }}
+        key={key}
+      />
     ));
 
     const templateNames = this.state.templates

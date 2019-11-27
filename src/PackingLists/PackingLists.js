@@ -2,6 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import listApiService from "../services/list-api-service";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+
 import "./PackingLists.css";
 
 export default class PackingLists extends React.Component {
@@ -26,21 +29,23 @@ export default class PackingLists extends React.Component {
           packedItemCount++;
         }
       });
-
       this.setState({ packedItemCount, totalItemCount });
     });
   }
 
   render() {
     return (
-      <Link to={`/list/${this.props.id}`} className="list-name__link">
-        <li className="list-name">
-          <div className="list-name__title">{this.props.name}</div>
-          <div className="list-name__count">
-            {this.state.packedItemCount}/{this.state.totalItemCount}
-          </div>
-        </li>
-      </Link>
+      <li className="list-name">
+        <Link to={`/list/${this.props.id}`} className="list-name__link">
+          <div className="list-name__title">{this.props.name}</div>{" "}
+        </Link>
+        <div className="list-name__delete-button">
+          <FontAwesomeIcon icon={faTrashAlt} />
+        </div>
+        <div className="list-name__count">
+          {this.state.packedItemCount}/{this.state.totalItemCount}
+        </div>
+      </li>
     );
   }
 }

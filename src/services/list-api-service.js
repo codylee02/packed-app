@@ -67,6 +67,14 @@ const listApiService = {
     ).then(res =>
       !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
     );
+  },
+  deleteListItem(listId, itemId) {
+    return fetch(`${config.API_BASE_URL}/lists/${listId}/${itemId}`, {
+      method: "DELETE",
+      headers: {
+        authorization: `bearer ${TokenService.getAuthToken()}`
+      }
+    }).then(res => (!res.ok ? res.json().then(e => Promise.reject(e)) : null));
   }
 };
 
