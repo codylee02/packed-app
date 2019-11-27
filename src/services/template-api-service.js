@@ -1,9 +1,9 @@
 import TokenService from "../services/token-service";
 import config from "../config";
 
-const listApiService = {
-  getLists() {
-    return fetch(`${config.API_BASE_URL}/lists`, {
+const templateApiService = {
+  getTemplates() {
+    return fetch(`${config.API_BASE_URL}/templates`, {
       headers: {
         authorization: `bearer ${TokenService.getAuthToken()}`
       }
@@ -11,8 +11,8 @@ const listApiService = {
       !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
     );
   },
-  getListItemCount(listId) {
-    return fetch(`${config.API_BASE_URL}/lists/${listId}`, {
+  getTemplateItemCount(templateId) {
+    return fetch(`${config.API_BASE_URL}/templates/${templateId}`, {
       headers: {
         authorization: `bearer ${TokenService.getAuthToken()}`
       }
@@ -20,8 +20,17 @@ const listApiService = {
       !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
     );
   },
-  postNewList(name) {
-    return fetch(`${config.API_BASE_URL}/lists`, {
+  getTemplateItems(templateId) {
+    return fetch(`${config.API_BASE_URL}/templates/${templateId}`, {
+      headers: {
+        authorization: `bearer ${TokenService.getAuthToken()}`
+      }
+    }).then(res =>
+      !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
+    );
+  },
+  postNewTemplate(name) {
+    return fetch(`${config.API_BASE_URL}/templates`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -32,8 +41,8 @@ const listApiService = {
       !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
     );
   },
-  postNewListItem(name, listId) {
-    return fetch(`${config.API_BASE_URL}/lists/${listId}`, {
+  postNewTemplateItem(name, templateId) {
+    return fetch(`${config.API_BASE_URL}/templates/${templateId}`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -41,33 +50,9 @@ const listApiService = {
       },
       body: JSON.stringify({ name: name })
     }).then(res =>
-      !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
-    );
-  },
-
-  getListItems(listId) {
-    return fetch(`${config.API_BASE_URL}/lists/${listId}`, {
-      method: "GET",
-      headers: {
-        authorization: `bearer ${TokenService.getAuthToken()}`
-      }
-    }).then(res =>
-      !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
-    );
-  },
-  importTemplate(listId, templateId) {
-    return fetch(
-      `${config.API_BASE_URL}/insert-template/${listId}/${templateId}`,
-      {
-        method: "POST",
-        headers: {
-          authorization: `bearer ${TokenService.getAuthToken()}`
-        }
-      }
-    ).then(res =>
       !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
     );
   }
 };
 
-export default listApiService;
+export default templateApiService;

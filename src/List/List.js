@@ -3,6 +3,7 @@ import React from "react";
 import Title from "../Title/Title";
 import ListItems from "../ListItems/ListItems";
 import listApiService from "../services/list-api-service";
+import templateApiService from "../services/template-api-service";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
@@ -15,7 +16,9 @@ export default class List extends React.Component {
     this.state = {
       error: null,
       listItems: [],
-      listName: null
+      listName: null,
+      templates: [],
+      selectedTemplateId: null
     };
   }
 
@@ -27,8 +30,8 @@ export default class List extends React.Component {
 
     listApiService
       .postNewListItem(name, listId)
-      .then(name =>
-        this.setState({ listItems: [...this.state.listItems, name] })
+      .then(newItem =>
+        this.setState({ listItems: [...this.state.listItems, newItem] })
       )
       .then(() => {
         new_item.value = "";
@@ -36,8 +39,24 @@ export default class List extends React.Component {
       .catch(res => this.setSate({ error: res.error }));
   };
 
+  handleDropdownChange = ev => {
+    this.setState({ selectedTemplateId: ev.target.value });
+  };
+
+  handleImportTemplate = ev => {
+    ev.preventDefault();
+    listApiService
+      .importTemplate(this.props.match.params.id, this.state.selectedTemplateId)
+      .then(newItems =>
+        this.setState({ listItems: [...this.state.listItems, ...newItems] })
+      );
+  };
+
   componentDidMount() {
     const listId = this.props.match.params.id;
+    templateApiService
+      .getTemplates()
+      .then(templates => this.setState({ templates: templates }));
 
     listApiService
       .getListItems(listId)
@@ -48,6 +67,14 @@ export default class List extends React.Component {
     const items = this.state.listItems.map((item, key) => (
       <ListItems item={{ ...item }} key={key} />
     ));
+
+    const templateNames = this.state.templates
+      ? this.state.templates.map((template, key) => (
+          <option value={template.id} key={key}>
+            {template.name}
+          </option>
+        ))
+      : null;
 
     return (
       <div>
@@ -67,19 +94,15 @@ export default class List extends React.Component {
             </form>
           </li>
           <li className="items">
-            <div className="item-name">
-              <select>
+            <form className="item-name" onSubmit={this.handleImportTemplate}>
+              <select onChange={this.handleDropdownChange}>
                 <option>Add Items From Template...</option>
-                <option>Overnight Trip</option>
-                <option>Daily Necessities</option>
-                <option>Photography Gig-Basic Package</option>
-                <option>Computer Bag</option>
-                <option>Beach Trip</option>
+                {templateNames}
               </select>
-            </div>
-            <div className="item-control-bar">
-              <FontAwesomeIcon icon={faPlus} />
-            </div>
+              <button className="submit-button">
+                <FontAwesomeIcon icon={faPlus} />
+              </button>
+            </form>
           </li>
           {items}
         </ul>

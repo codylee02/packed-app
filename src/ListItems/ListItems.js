@@ -7,7 +7,6 @@ import "./ListItems.css";
 
 export default class ListItems extends React.Component {
   render() {
-    console.log(this.props.item);
     const cssClass = this.props.item.packed === true ? "items packed" : "items";
 
     return (

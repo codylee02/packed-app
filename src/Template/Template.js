@@ -2,6 +2,7 @@ import React from "react";
 
 import Title from "../Title/Title";
 import ListItems from "../ListItems/ListItems";
+import templateApiService from "../services/template-api-service";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
@@ -9,46 +10,61 @@ import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import "./Template.css";
 
 export default class Template extends React.Component {
-  render() {
-    const itemsInTemplate = this.props.STORE.templateItems.filter(
-      item => item.templateId === Number(this.props.match.params.id)
-    );
+  constructor(props) {
+    super(props);
+    this.state = {
+      error: null,
+      templateItems: [],
+      templateName: null
+    };
+  }
 
-    const items = itemsInTemplate.map((item, key) => (
-      <ListItems item={{ ...item }} STORE={this.props.STORE} key={key} />
+  handleSubmit = ev => {
+    ev.preventDefault();
+    const { new_item } = ev.target;
+    const name = new_item.value;
+    const templateId = this.props.match.params.id;
+
+    templateApiService
+      .postNewTemplateItem(name, templateId)
+      .then(newItem =>
+        this.setState({ templateItems: [...this.state.templateItems, newItem] })
+      )
+      .then(() => {
+        new_item.value = "";
+      })
+      .catch(res => this.setState({ error: res.error }));
+  };
+
+  componentDidMount() {
+    const templateId = this.props.match.params.id;
+
+    templateApiService
+      .getTemplateItems(templateId)
+      .then(templateItems => this.setState({ ...templateItems }));
+  }
+
+  render() {
+    const items = this.state.templateItems.map((item, key) => (
+      <ListItems item={{ ...item }} key={key} />
     ));
 
     return (
       <div>
-        <Title
-          templatesId={this.props.match.params.id}
-          listType={this.props.listType}
-          STORE={this.props.STORE}
-        />
+        <Title listName={this.state.templateName} listType="template" />
 
         <ul className="list">
           <li className="items">
-            <div className="item-name">
-              <input type="text" placeholder="New Item..."></input>
-            </div>
-            <div className="item-control-bar">
-              <FontAwesomeIcon icon={faPlus} />
-            </div>
-          </li>
-          <li className="items">
-            <div className="item-name">
-              <select>
-                <option>Add to new list...</option>
-                <option>Weekend Camping Trip</option>
-                <option>School Daypack</option>
-                <option>Wedding Photo Shoot</option>
-                <option>Work Presentation</option>
-                <option>Surfing Trip</option>
-              </select>
-            </div>
-            <div className="item-control-bar">
-              <FontAwesomeIcon icon={faPlus} />
-            </div>
+            <form className="item-name" onSubmit={this.handleSubmit}>
+              <input
+                type="text"
+                name="new_item"
+                placeholder="New Item..."
+              ></input>
+              <button className="submit-button">
+                <FontAwesomeIcon icon={faPlus} />
+              </button>
+            </form>
           </li>
           {items}
         </ul>

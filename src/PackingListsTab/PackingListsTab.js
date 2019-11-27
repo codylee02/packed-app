@@ -42,8 +42,7 @@ export default class Lists extends React.Component {
 
     return (
       <ul className="Lists">
-        {lists}
-        <li className="list-name new-item">
+        <li className="list-name">
           <form className="new-list-form" onSubmit={this.handleSubmit}>
             <input
               name="new_list"
@@ -55,6 +54,7 @@ export default class Lists extends React.Component {
             </button>
           </form>
         </li>
+        {lists}
       </ul>
     );
   }
