@@ -1,6 +1,7 @@
 import React from "react";
 
 import LandingPageNav from "../LandingPageNav/LandingPageNav";
+import RegistrationForm from "../components/RegistrationForm/RegistrationForm";
 
 import "./LandingPage.css";
 
@@ -42,32 +43,7 @@ export default class LandingPage extends React.Component {
 
         <section>
           <h2>Sign Up</h2>
-          <form className="sign-up-form">
-            <label>
-              First Name:<input type="text" name="first-name"></input>
-            </label>
-            <br />
-            Last Name: <input type="text" name="last-name"></input>
-            <br />
-            Email:{" "}
-            <input type="email" name="email" autoComplete="username"></input>
-            <br />
-            Password:{" "}
-            <input
-              type="password"
-              name="password"
-              autoComplete="new-password"
-            ></input>
-            <br />
-            Confirm Password:{" "}
-            <input
-              type="password"
-              name="confirm-password"
-              autoComplete="new-password"
-            ></input>
-            <br />
-            <input type="submit" value="Sign Up"></input>
-          </form>
+          <RegistrationForm />
         </section>
       </>
     );
