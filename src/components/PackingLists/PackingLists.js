@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import listApiService from "../services/list-api-service";
+import listApiService from "../../services/list-api-service";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
@@ -15,6 +15,10 @@ export default class PackingLists extends React.Component {
       checkedItemCount: null
     };
   }
+
+  handleDeleteClick = () => {
+    this.props.handleDeleteList(this.props.id);
+  };
 
   componentDidMount() {
     const listId = this.props.id;
@@ -39,7 +43,10 @@ export default class PackingLists extends React.Component {
         <Link to={`/list/${this.props.id}`} className="list-name__link">
           <div className="list-name__title">{this.props.name}</div>{" "}
         </Link>
-        <div className="list-name__delete-button">
+        <div
+          className="list-name__delete-button"
+          onClick={this.handleDeleteClick}
+        >
           <FontAwesomeIcon icon={faTrashAlt} />
         </div>
         <div className="list-name__count">

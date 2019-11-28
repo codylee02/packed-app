@@ -52,6 +52,22 @@ const templateApiService = {
     }).then(res =>
       !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
     );
+  },
+  deleteListItem(templateId, itemId) {
+    return fetch(`${config.API_BASE_URL}/templates/${templateId}/${itemId}`, {
+      method: "DELETE",
+      headers: {
+        authorization: `bearer ${TokenService.getAuthToken()}`
+      }
+    }).then(res => (!res.ok ? res.json().then(e => Promise.reject(e)) : null));
+  },
+  deleteTemplate(templateId) {
+    return fetch(`${config.API_BASE_URL}/templates/${templateId}`, {
+      method: "DELETE",
+      headers: {
+        authorization: `bearer ${TokenService.getAuthToken()}`
+      }
+    }).then(res => (!res.ok ? res.json().then(e => Promise.reject(e)) : null));
   }
 };
 

@@ -2,8 +2,8 @@ import React from "react";
 
 import Title from "../Title/Title";
 import ListItems from "../ListItems/ListItems";
-import listApiService from "../services/list-api-service";
-import templateApiService from "../services/template-api-service";
+import listApiService from "../../services/list-api-service";
+import templateApiService from "../../services/template-api-service";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
@@ -61,6 +61,12 @@ export default class List extends React.Component {
     });
   };
 
+  handlePackedToggle = (itemId, packedStatus) => {
+    const listId = this.props.match.params.id;
+    const newPackedStatus = !packedStatus;
+    listApiService.toggleItemPacked(listId, itemId, newPackedStatus);
+  };
+
   componentDidMount() {
     const listId = this.props.match.params.id;
     templateApiService
@@ -73,13 +79,16 @@ export default class List extends React.Component {
   }
 
   render() {
-    const items = this.state.listItems.map((item, key) => (
-      <ListItems
-        handleDeleteListItem={this.handleDeleteListItem}
-        item={{ ...item }}
-        key={key}
-      />
-    ));
+    const items = this.state.listItems
+      ? this.state.listItems.map((item, key) => (
+          <ListItems
+            handleDeleteListItem={this.handleDeleteListItem}
+            handlePackedToggle={this.handlePackedToggle}
+            item={{ ...item }}
+            key={key}
+          />
+        ))
+      : null;
 
     const templateNames = this.state.templates
       ? this.state.templates.map((template, key) => (

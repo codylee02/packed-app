@@ -75,6 +75,24 @@ const listApiService = {
         authorization: `bearer ${TokenService.getAuthToken()}`
       }
     }).then(res => (!res.ok ? res.json().then(e => Promise.reject(e)) : null));
+  },
+  deleteList(listId) {
+    return fetch(`${config.API_BASE_URL}/lists/${listId}`, {
+      method: "DELETE",
+      headers: {
+        authorization: `bearer ${TokenService.getAuthToken()}`
+      }
+    }).then(res => (!res.ok ? res.json().then(e => Promise.reject(e)) : null));
+  },
+  toggleItemPacked(listId, itemId, newPackedStatus) {
+    return fetch(`${config.API_BASE_URL}/lists/${listId}/${itemId}`, {
+      method: "PATCH",
+      headers: {
+        "content-type": "application/json",
+        authorization: `bearer ${TokenService.getAuthToken()}`
+      },
+      body: JSON.stringify({ packed: newPackedStatus })
+    }).then(res => (!res.ok ? res.json().then(e => Promise.reject(e)) : null));
   }
 };
 

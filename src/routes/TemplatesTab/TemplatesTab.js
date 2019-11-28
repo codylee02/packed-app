@@ -1,8 +1,8 @@
 import React from "react";
 
 import "./TemplatesTab.css";
-import TemplateList from "../TemplateList/TemplateList";
-import templateApiService from "../services/template-api-service";
+import TemplateList from "../../components/TemplateList/TemplateList";
+import templateApiService from "../../services/template-api-service";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
@@ -32,6 +32,16 @@ export default class Templates extends React.Component {
       .catch(res => this.setState({ error: res.error }));
   };
 
+  handleDeleteTemplate = templateId => {
+    templateApiService.deleteTemplate(templateId).then(() => {
+      this.setState({
+        templates: this.state.templates.filter(
+          template => template.id !== templateId
+        )
+      });
+    });
+  };
+
   componentDidMount() {
     templateApiService
       .getTemplates()
@@ -40,13 +50,18 @@ export default class Templates extends React.Component {
   render() {
     const templates = this.state.templates
       ? this.state.templates.map((template, key) => (
-          <TemplateList className="template-list" {...template} key={key} />
+          <TemplateList
+            handleDeleteTemplate={this.handleDeleteTemplate}
+            className="template-list"
+            {...template}
+            key={key}
+          />
         ))
       : null;
 
     return (
       <ul className="templates-list">
-        <li className="new-template">
+        <li className="template-name">
           <form className="new-template_form" onSubmit={this.handleSubmit}>
             <input
               name="new_template"

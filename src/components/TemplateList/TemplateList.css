@@ -1,0 +1,33 @@
+.template-name {
+  display: flex;
+  justify-content: space-between;
+  margin: 0.1em;
+  padding: 0.2em;
+  list-style: none;
+  border: 1px solid black;
+  border-radius: 0.1em;
+  font-size: 1em;
+  align-items: center;
+}
+
+.template-name__count {
+  font-size: 0.7em;
+  font-style: italic;
+  color: grey;
+  width: 4%;
+}
+
+.template-name__link {
+  text-decoration: none;
+  color: inherit;
+  flex-grow: 1;
+  text-align: left;
+}
+
+.template-name__delete-button {
+  color: lightgray;
+}
+
+.template-name__delete-button:hover {
+  cursor: pointer;
+}

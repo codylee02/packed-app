@@ -1,7 +1,7 @@
 import React from "react";
 
-import LandingPageNav from "../LandingPageNav/LandingPageNav";
-import RegistrationForm from "../components/RegistrationForm/RegistrationForm";
+import LandingPageNav from "../../components/LandingPageNav/LandingPageNav";
+import RegistrationForm from "../../components/RegistrationForm/RegistrationForm";
 
 import "./LandingPage.css";
 

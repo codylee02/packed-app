@@ -1,8 +1,9 @@
-.list-name {
+.items {
   display: flex;
   justify-content: space-between;
   margin: 0.1em;
   padding: 0.2em;
+  text-align: left;
   list-style: none;
   text-decoration: none;
   border: 1px solid black;
@@ -11,20 +12,29 @@
   align-items: center;
 }
 
-.list-name__count {
-  font-size: 0.7em;
-  font-style: italic;
-  color: grey;
-  width: 4%;
-}
-
-.list-name__link {
+.items {
   text-decoration: none;
   color: inherit;
-  flex-grow: 1;
-  text-align: left;
 }
 
-.list-name__delete-button {
+.item-name {
+  flex-grow: 1;
+}
+
+.packed {
+  text-decoration: line-through;
+}
+
+.item-control-bar {
   color: lightgray;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+}
+.item-control-bar:hover,
+.item-name:hover {
+  cursor: pointer;
+}
+
+.item-control-bar svg {
+  font-size: 1em;
 }

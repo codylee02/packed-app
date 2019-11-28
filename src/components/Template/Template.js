@@ -1,8 +1,8 @@
 import React from "react";
 
 import Title from "../Title/Title";
-import ListItems from "../ListItems/ListItems";
-import templateApiService from "../services/template-api-service";
+import TemplateItems from "../TemplateItems/TemplateItems";
+import templateApiService from "../../services/template-api-service";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
@@ -36,6 +36,17 @@ export default class Template extends React.Component {
       .catch(res => this.setState({ error: res.error }));
   };
 
+  handleDeleteListItem = itemId => {
+    const templateId = this.props.match.params.id;
+    templateApiService.deleteListItem(templateId, itemId).then(() => {
+      this.setState({
+        templateItems: this.state.templateItems.filter(
+          item => item.id !== itemId
+        )
+      });
+    });
+  };
+
   componentDidMount() {
     const templateId = this.props.match.params.id;
 
@@ -46,7 +57,11 @@ export default class Template extends React.Component {
 
   render() {
     const items = this.state.templateItems.map((item, key) => (
-      <ListItems item={{ ...item }} key={key} />
+      <TemplateItems
+        handleDeleteListItem={this.handleDeleteListItem}
+        item={{ ...item }}
+        key={key}
+      />
     ));
 
     return (

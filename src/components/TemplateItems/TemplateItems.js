@@ -3,19 +3,17 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 
-import "./ListItems.css";
+import "./TemplateItems.css";
 
-export default class ListItems extends React.Component {
+export default class TemplateItems extends React.Component {
   handleDeleteClick = () => {
     this.props.handleDeleteListItem(this.props.item.id);
   };
 
   render() {
-    const cssClass = this.props.item.packed === true ? "items packed" : "items";
-
     return (
-      <li className={cssClass}>
-        <div className="item-name">{this.props.item.name}</div>
+      <li className="items">
+        <div className="template-item-name">{this.props.item.name}</div>
         <div className="item-control-bar" onClick={this.handleDeleteClick}>
           <FontAwesomeIcon icon={faTrashAlt} />
         </div>
