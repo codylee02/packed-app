@@ -6,6 +6,10 @@ import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import "./TemplateItems.css";
 
 export default class TemplateItems extends React.Component {
+  static defaultProps = {
+    item: { name: "" }
+  };
+
   handleDeleteClick = () => {
     this.props.handleDeleteListItem(this.props.item.id);
   };
