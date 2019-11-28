@@ -43,12 +43,12 @@ export default class Lists extends React.Component {
   }
   render() {
     const lists = this.state.lists
-      ? this.state.lists.map((list, key) => (
+      ? this.state.lists.map(list => (
           <PackingLists
             handleDeleteList={this.handleDeleteList}
             className="list-name"
             {...list}
-            key={key}
+            key={list.id}
           />
         ))
       : null;

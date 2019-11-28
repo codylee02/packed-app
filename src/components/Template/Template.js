@@ -10,6 +10,10 @@ import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import "./Template.css";
 
 export default class Template extends React.Component {
+  static defaultProps = {
+    match: { params: { id: "" } }
+  };
+
   constructor(props) {
     super(props);
     this.state = {

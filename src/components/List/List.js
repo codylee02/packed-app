@@ -11,6 +11,10 @@ import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import "./List.css";
 
 export default class List extends React.Component {
+  static defaultProps = {
+    match: { params: { id: 1 } }
+  };
+
   constructor(props) {
     super(props);
     this.state = {

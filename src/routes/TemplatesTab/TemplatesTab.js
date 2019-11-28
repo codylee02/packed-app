@@ -49,12 +49,12 @@ export default class Templates extends React.Component {
   }
   render() {
     const templates = this.state.templates
-      ? this.state.templates.map((template, key) => (
+      ? this.state.templates.map(template => (
           <TemplateList
             handleDeleteTemplate={this.handleDeleteTemplate}
             className="template-list"
             {...template}
-            key={key}
+            key={template.id}
           />
         ))
       : null;

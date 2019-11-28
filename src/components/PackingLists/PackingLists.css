@@ -27,6 +27,11 @@
 
 .list-name__delete-button {
   color: lightgray;
+  padding-right: 5px;
+}
+.list-controls {
+  display: flex;
+  align-items: center;
 }
 
 .list-name__delete-button:hover {

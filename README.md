@@ -1,5 +1,10 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## PAKD client
+This React app ties in with an express server.
+With this app, users can make packing lists & templates to make packing
+easier.
+
 ## Available Scripts
 
 In the project directory, you can run:

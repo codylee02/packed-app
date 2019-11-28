@@ -6,6 +6,10 @@ import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import "./ListItems.css";
 
 export default class ListItems extends React.Component {
+  static defaultProps = {
+    item: { packed: true }
+  };
+
   constructor(props) {
     super(props);
     this.state = {
