@@ -84,19 +84,19 @@ export default class List extends React.Component {
 
   render() {
     const items = this.state.listItems
-      ? this.state.listItems.map((item, key) => (
+      ? this.state.listItems.map((item) => (
           <ListItems
             handleDeleteListItem={this.handleDeleteListItem}
             handlePackedToggle={this.handlePackedToggle}
             item={{ ...item }}
-            key={key}
+            key={item.id}
           />
         ))
       : null;
 
     const templateNames = this.state.templates
-      ? this.state.templates.map((template, key) => (
-          <option value={template.id} key={key}>
+      ? this.state.templates.map((template) => (
+          <option value={template.id} key={template.id}>
             {template.name}
           </option>
         ))
@@ -112,6 +112,7 @@ export default class List extends React.Component {
                 type="text"
                 name="new_item"
                 placeholder="New Item..."
+                required
               ></input>
 
               <button className="submit-button">

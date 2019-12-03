@@ -61,6 +61,7 @@ export default class Lists extends React.Component {
               name="new_list"
               type="text"
               placeholder="New List..."
+              required
             ></input>
             <button type="submit" className="new-list">
               <FontAwesomeIcon icon={faPlus} />

@@ -5,21 +5,26 @@ import RegistrationForm from "../../components/RegistrationForm/RegistrationForm
 
 import "./LandingPage.css";
 
-export default function LandingPage() {
+export default function LandingPage(props) {
+
+  function handleRegistrationSuccess(user) {
+    const { history } = props;
+    history.push("/login");
+  }
+
   return (
     <>
       <LandingPageNav />
       <header role="banner">
         <h1>PAKD</h1>
         <h2>Never forget to bring your stuff</h2>
-        <h3>**Click login to be taken to the app**</h3>
       </header>
       <section>
         <a href="https://placeholder.com">
           <img src="https://via.placeholder.com/150" alt="placeholder"></img>
         </a>
         <p>[image placeholder for templates]</p>
-        <p>Create templates, or bags for commonly packed items</p>
+        <p>Create templates for commonly packed items</p>
       </section>
 
       <section>
@@ -42,8 +47,14 @@ export default function LandingPage() {
 
       <section>
         <h2>Sign Up</h2>
-        <RegistrationForm />
+        <RegistrationForm onRegistrationSuccess={handleRegistrationSuccess} />
       </section>
     </>
   );
 }
+
+LandingPage.defaultProps = {
+  history: {
+    push: () => {}
+  }
+};

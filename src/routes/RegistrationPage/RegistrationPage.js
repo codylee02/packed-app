@@ -10,7 +10,7 @@ export default function RegistrationPage(props) {
 
   return (
     <Section className="RegistrationPage">
-      <h2>Register</h2>
+      <h2>Sign Up</h2>
       <RegistrationForm onRegistrationSuccess={handleRegistrationSuccess} />
     </Section>
   );

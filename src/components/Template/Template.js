@@ -60,11 +60,11 @@ export default class Template extends React.Component {
   }
 
   render() {
-    const items = this.state.templateItems.map((item, key) => (
+    const items = this.state.templateItems.map((item) => (
       <TemplateItems
         handleDeleteListItem={this.handleDeleteListItem}
         item={{ ...item }}
-        key={key}
+        key={item.id}
       />
     ));
 
@@ -79,6 +79,7 @@ export default class Template extends React.Component {
                 type="text"
                 name="new_item"
                 placeholder="New Item..."
+                required
               ></input>
               <button className="submit-button">
                 <FontAwesomeIcon icon={faPlus} />

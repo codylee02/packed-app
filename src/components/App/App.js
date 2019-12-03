@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 
 import PublicOnlyRoute from "../Utils/PublicOnlyRoute";
 import PrivateRoute from "../Utils/PrivateRoute";
@@ -35,7 +35,7 @@ class App extends React.Component {
           <PrivateRoute path="/templates" component={Nav} />
           <PrivateRoute path="/template" component={Nav} />
         </Switch>
-        <PublicOnlyRoute exact path="/" component={LandingPage} />
+        <Route exact path="/" component={LandingPage} />
 
         <PrivateRoute path="/lists" component={() => <PackingListsTab />} />
         <PrivateRoute path="/templates" component={() => <TemplatesTab />} />

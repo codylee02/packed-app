@@ -67,6 +67,7 @@ export default class Templates extends React.Component {
               name="new_template"
               type="text"
               placeholder="New Template..."
+              required
             ></input>
             <button type="submit" className="new-template_submit-button">
               <FontAwesomeIcon icon={faPlus} />
