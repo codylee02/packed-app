@@ -33,13 +33,14 @@ export default class TemplateList extends React.Component {
         <Link to={`/template/${this.props.id}`} className="template-name__link">
           <div className="template-name__title">{this.props.name}</div>
         </Link>
+
+        <div className="template-name__count">{this.state.totalItemCount}</div>
         <div
           className="template-name__delete-button"
           onClick={this.handleDeleteClick}
         >
           <FontAwesomeIcon icon={faTrashAlt} />
         </div>
-        <div className="template-name__count">{this.state.totalItemCount}</div>
       </li>
     );
   }

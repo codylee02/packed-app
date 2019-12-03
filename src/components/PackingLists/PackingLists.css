@@ -11,12 +11,12 @@
   align-items: center;
 }
 
-.list-name__count {
+ .list-name__count {
   font-size: 0.7em;
   font-style: italic;
   color: grey;
-  width: 4%;
-}
+  padding-right: 5px;
+} 
 
 .list-name__link {
   text-decoration: none;
