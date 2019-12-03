@@ -5,7 +5,7 @@ Users can also make templates that can be imported into lists.
 ## Live Page: [PAKD](https://packed-app.codylee02.now.sh)
 
 ## Server:
-PAKD uses an express server located [here](https://github.com/codylee02/packed-api)
+[PAKD server GitHub](https://github.com/codylee02/packed-api)
 
 ## Framework Used
 - React
@@ -28,3 +28,9 @@ npm run build
 - Start in local dev environment
 ```
 npm start
+```
+
+- Deploy
+```
+npm run deploy
+```
