@@ -17,7 +17,7 @@ export default function LandingPage(props) {
       <LandingPageNav />
       <header role="banner">
         <h1>PAKD</h1>
-        <h2>Never forget to bring your stuff</h2>
+        <h2>Never forget to pack your stuff</h2>
       </header>
       <section>
         <a href="https://placeholder.com">
