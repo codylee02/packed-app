@@ -1,19 +1,25 @@
 import React, { Component } from "react";
 import { Button, Input, Required } from "../Utils/Utils";
 import AuthApiService from "../../services/auth-api-service";
+import TokenService from "../../services/token-service";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 
 export default class RegistrationForm extends Component {
   static defaultProps = {
     onRegistrationSuccess: () => {}
   };
 
-  state = { error: null };
+  state = { error: null, registering: false };
 
   handleSubmit = ev => {
     ev.preventDefault();
+    TokenService.clearAuthToken();
     const { first_name, last_name, username, password } = ev.target;
 
-    this.setState({ error: null });
+    this.setState({ error: null, registering: true });
+
     AuthApiService.postUser({
       first_name: first_name.value,
       last_name: last_name.value,
@@ -25,6 +31,7 @@ export default class RegistrationForm extends Component {
         last_name.value = "";
         username.value = "";
         password.value = "";
+        this.setState({ registering: false });
         this.props.onRegistrationSuccess();
       })
       .catch(res => {
@@ -34,6 +41,12 @@ export default class RegistrationForm extends Component {
 
   render() {
     const { error } = this.state;
+    const registerButton =
+      this.state.registering === false ? (
+        <Button type="submit">Register</Button>
+      ) : (
+        <FontAwesomeIcon icon={faSpinner} spin />
+      );
     return (
       <form className="RegistrationForm" onSubmit={this.handleSubmit}>
         <div role="alert">{error && <p className="red">{error}</p>}</div>
@@ -82,7 +95,7 @@ export default class RegistrationForm extends Component {
             id="RegistrationForm__password"
           ></Input>
         </div>
-        <Button type="submit">Register</Button>
+        {registerButton}
       </form>
     );
   }

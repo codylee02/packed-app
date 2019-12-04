@@ -2,17 +2,19 @@ import React, { Component } from "react";
 import TokenService from "../../services/token-service";
 import AuthApiService from "../../services/auth-api-service";
 import { Button, Input } from "../Utils/Utils";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 
 export default class LoginForm extends Component {
   static defaultProps = {
     onLoginSuccess: () => {}
   };
 
-  state = { error: null };
+  state = { error: null, loggingIn: false };
 
   handleSubmitJwtAuth = ev => {
     ev.preventDefault();
-    this.setState({ error: null });
+    this.setState({ error: null, loggingIn: true });
     const { username, password } = ev.target;
 
     AuthApiService.postLogin({
@@ -22,6 +24,7 @@ export default class LoginForm extends Component {
       .then(res => {
         username.value = "";
         password.value = "";
+        this.setState({ loggingIn: false });
         TokenService.saveAuthToken(res.authToken);
         this.props.onLoginSuccess();
       })
@@ -31,6 +34,12 @@ export default class LoginForm extends Component {
   };
   render() {
     const { error } = this.state;
+    const loginButton =
+      this.state.loggingIn === false ? (
+        <Button type="submit">Login</Button>
+      ) : (
+        <FontAwesomeIcon icon={faSpinner} spin />
+      );
     return (
       <form className="LoginForm" onSubmit={this.handleSubmitJwtAuth}>
         <div role="alert">{error && <p className="red">{error}</p>}</div>
@@ -47,7 +56,7 @@ export default class LoginForm extends Component {
             id="LoginForm__password"
           ></Input>
         </div>
-        <Button type="submit">Login</Button>
+        {loginButton}
       </form>
     );
   }
