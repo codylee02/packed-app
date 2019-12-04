@@ -23,7 +23,7 @@ export default function Nav(props) {
         <div className="nav-icon">
           <FontAwesomeIcon icon={faList} className="nav-icons" />
         </div>
-        <div className="nav-label">Lists</div>
+        <div className="nav-label">Packing Lists</div>
       </Link>
       <Link to="/templates" className="nav-buttons">
         <div className="nav-icon">
