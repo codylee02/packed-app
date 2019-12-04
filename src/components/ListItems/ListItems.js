@@ -1,7 +1,8 @@
 import React from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import { faTrashAlt, faCheckSquare } from "@fortawesome/free-solid-svg-icons";
+import { faSquare } from "@fortawesome/free-regular-svg-icons";
 
 import "./ListItems.css";
 
@@ -28,9 +29,18 @@ export default class ListItems extends React.Component {
 
   render() {
     let cssClass = this.state.packed === true ? "items packed" : "items";
+    const checkBox =
+      this.state.packed === true ? (
+        <FontAwesomeIcon icon={faCheckSquare} color="green" />
+      ) : (
+        <FontAwesomeIcon icon={faSquare} />
+      );
 
     return (
       <li className={cssClass}>
+        <div className="ListItems__checkbox" onClick={this.handleItemClick}>
+          {checkBox}
+        </div>
         <div className="item-name" onClick={this.handleItemClick}>
           {this.props.item.name}
         </div>
