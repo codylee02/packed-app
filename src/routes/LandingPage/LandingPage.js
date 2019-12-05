@@ -1,11 +1,16 @@
 import React from "react";
 
 import LandingPageNav from "../../components/LandingPageNav/LandingPageNav";
-import RegistrationPage from "../../routes/RegistrationPage/RegistrationPage";
+import RegistrationForm from "../../components/RegistrationForm/RegistrationForm";
 
 import "./LandingPage.css";
 
 export default function LandingPage(props) {
+  function handleRegistrationSuccess(user) {
+    const { history } = props;
+    history.push("/login");
+  }
+
   return (
     <>
       <LandingPageNav />
@@ -39,7 +44,10 @@ export default function LandingPage(props) {
         <p>Walk out the door ready for your day</p>
       </section>
 
-      <RegistrationPage />
+      <section className="RegistrationPage">
+        <h2>Sign Up</h2>
+        <RegistrationForm onRegistrationSuccess={handleRegistrationSuccess} />
+      </section>
     </>
   );
 }
