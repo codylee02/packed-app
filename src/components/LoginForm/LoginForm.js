@@ -4,6 +4,9 @@ import AuthApiService from "../../services/auth-api-service";
 import { Button, Input } from "../Utils/Utils";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
+
+import "./LoginForm.css";
 
 export default class LoginForm extends Component {
   static defaultProps = {
@@ -38,25 +41,38 @@ export default class LoginForm extends Component {
       this.state.loggingIn === false ? (
         <Button type="submit">Login</Button>
       ) : (
-        <FontAwesomeIcon icon={faSpinner} spin />
+        <Button>
+          <FontAwesomeIcon icon={faSpinner} spin />
+        </Button>
       );
     return (
       <form className="LoginForm" onSubmit={this.handleSubmitJwtAuth}>
         <div role="alert">{error && <p className="red">{error}</p>}</div>
-        <div className="username">
-          <label htmlFor="LoginForm__username">Email</label>
-          <Input required name="username" id="LoginForm__username"></Input>
+        <label className="LoginForm__label" htmlFor="LoginForm__username">
+          Email
+        </label>
+        <Input
+          className="LoginForm__input"
+          required
+          name="username"
+          id="LoginForm__username"
+        ></Input>
+        <label className="LoginForm__label" htmlFor="LoginForm__password">
+          Password
+        </label>
+        <Input
+          className="LoginForm__input"
+          required
+          name="password"
+          type="password"
+          id="LoginForm__password"
+        ></Input>
+        <div className="LoginForm__form-controls">
+          <Link to={"/"}>
+            <Button type="button">Cancel</Button>
+          </Link>
+          {loginButton}
         </div>
-        <div className="password">
-          <label htmlFor="LoginForm__password">Password</label>
-          <Input
-            required
-            name="password"
-            type="password"
-            id="LoginForm__password"
-          ></Input>
-        </div>
-        {loginButton}
       </form>
     );
   }
