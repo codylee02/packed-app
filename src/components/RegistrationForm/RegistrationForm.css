@@ -1,0 +1,37 @@
+.RegistrationForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.RegistrationForm__form-controls {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.RegistrationForm__form-controls a .Button {
+  width: 100%;
+}
+
+.RegistrationForm__form-controls .Button,
+.RegistrationForm__form-controls a {
+  width: 48%;
+}
+
+.RegistrationForm__form-controls .Button:hover,
+.RegistrationForm__form-controls a:hover {
+  cursor: pointer;
+}
+
+.RegistrationForm__form-controls svg {
+  flex-grow: 1;
+  align-self: center;
+  width: 100%;
+  color: gray;
+}
