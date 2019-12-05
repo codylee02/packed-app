@@ -2,16 +2,25 @@ import React from "react";
 import { Section } from "../../components/Utils/Utils";
 import RegistrationForm from "../../components/RegistrationForm/RegistrationForm";
 
+import "./RegistrationPage.css";
 export default function RegistrationPage(props) {
   function handleRegistrationSuccess(user) {
     const { history } = props;
     history.push("/login");
   }
 
+  function handleRegistrationCancel() {
+    const { history } = props;
+    history.push("/");
+  }
+
   return (
     <Section className="RegistrationPage">
       <h2>Sign Up</h2>
-      <RegistrationForm onRegistrationSuccess={handleRegistrationSuccess} />
+      <RegistrationForm
+        onRegistrationCancel={handleRegistrationCancel}
+        onRegistrationSuccess={handleRegistrationSuccess}
+      />
     </Section>
   );
 }
