@@ -17,13 +17,7 @@ header {
 section {
   min-height: 200px;
   padding: 6% 0;
-  background-color: #bbb;
 }
-
-section:nth-child(even) {
-  background-color: #ddd;
-}
-
 .sign-up-form {
   text-align: left;
   padding: 10%;
