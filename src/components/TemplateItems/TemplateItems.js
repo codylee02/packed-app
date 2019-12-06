@@ -16,9 +16,12 @@ export default class TemplateItems extends React.Component {
 
   render() {
     return (
-      <li className="items">
-        <div className="template-item-name">{this.props.item.name}</div>
-        <div className="item-control-bar" onClick={this.handleDeleteClick}>
+      <li className="TemplateItems__li">
+        <div className="TemplateItems__name">{this.props.item.name}</div>
+        <div
+          className="TemplateItems__control-bar"
+          onClick={this.handleDeleteClick}
+        >
           <FontAwesomeIcon icon={faTrashAlt} />
         </div>
       </li>

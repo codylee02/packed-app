@@ -1,7 +1,11 @@
-.title {
+.Title__h2 {
+  position: fixed;
+  top: 0;
+  left: 0;
   margin: 0;
-  padding: 0 10px;
-  background: gray;
+  padding: 0.2rem 0.2rem;
+  width: 100%;
+  background: #5401ff;
   text-align: left;
   color: white;
 }

@@ -60,7 +60,7 @@ export default class Template extends React.Component {
   }
 
   render() {
-    const items = this.state.templateItems.map((item) => (
+    const items = this.state.templateItems.map(item => (
       <TemplateItems
         handleDeleteListItem={this.handleDeleteListItem}
         item={{ ...item }}
@@ -69,19 +69,18 @@ export default class Template extends React.Component {
     ));
 
     return (
-      <div>
-        <Title listName={this.state.templateName} listType="template" />
-
-        <ul className="list">
-          <li className="items">
-            <form className="item-name" onSubmit={this.handleSubmit}>
+      <div className="Template">
+        <Title listName={this.state.templateName} />
+        <ul className="Template__ul">
+          <li className="Template__li">
+            <form className="Template__form" onSubmit={this.handleSubmit}>
               <input
                 type="text"
                 name="new_item"
                 placeholder="New Item..."
                 required
               ></input>
-              <button className="submit-button">
+              <button className="Template__button">
                 <FontAwesomeIcon icon={faPlus} />
               </button>
             </form>

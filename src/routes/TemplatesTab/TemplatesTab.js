@@ -1,6 +1,7 @@
 import React from "react";
 
 import "./TemplatesTab.css";
+import Title from "../../components/Title/Title";
 import TemplateList from "../../components/TemplateList/TemplateList";
 import templateApiService from "../../services/template-api-service";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -52,7 +53,7 @@ export default class Templates extends React.Component {
       ? this.state.templates.map(template => (
           <TemplateList
             handleDeleteTemplate={this.handleDeleteTemplate}
-            className="template-list"
+            className="TemplateList"
             {...template}
             key={template.id}
           />
@@ -60,22 +61,27 @@ export default class Templates extends React.Component {
       : null;
 
     return (
-      <ul className="templates-list">
-        <li className="template-name">
-          <form className="new-template_form" onSubmit={this.handleSubmit}>
-            <input
-              name="new_template"
-              type="text"
-              placeholder="New Template..."
-              required
-            ></input>
-            <button type="submit" className="new-template_submit-button">
-              <FontAwesomeIcon icon={faPlus} />
-            </button>
-          </form>
-        </li>
-        {templates}
-      </ul>
+      <>
+        <Title listName={"Templates"} />
+        <div className="TemplatesTab">
+          <ul className="TemplatesTab__ul">
+            <li className="TemplatesTab__li">
+              <form className="TemplatesTab__form" onSubmit={this.handleSubmit}>
+                <input
+                  name="new_template"
+                  type="text"
+                  placeholder="New Template..."
+                  required
+                ></input>
+                <button type="submit" className="TemplatesTab__button">
+                  <FontAwesomeIcon icon={faPlus} />
+                </button>
+              </form>
+            </li>
+            {templates}
+          </ul>
+        </div>
+      </>
     );
   }
 }

@@ -84,7 +84,7 @@ export default class List extends React.Component {
 
   render() {
     const items = this.state.listItems
-      ? this.state.listItems.map((item) => (
+      ? this.state.listItems.map(item => (
           <ListItems
             handleDeleteListItem={this.handleDeleteListItem}
             handlePackedToggle={this.handlePackedToggle}
@@ -95,7 +95,7 @@ export default class List extends React.Component {
       : null;
 
     const templateNames = this.state.templates
-      ? this.state.templates.map((template) => (
+      ? this.state.templates.map(template => (
           <option value={template.id} key={template.id}>
             {template.name}
           </option>
@@ -103,11 +103,11 @@ export default class List extends React.Component {
       : null;
 
     return (
-      <div>
-        <Title listName={this.state.listName} listType={"list"} />
-        <ul className="list">
-          <li className="items">
-            <form className="item-name" onSubmit={this.handleSubmit}>
+      <div className="List">
+        <Title listName={this.state.listName} />
+        <ul className="List__ul">
+          <li className="List__li">
+            <form className="List__form" onSubmit={this.handleSubmit}>
               <input
                 type="text"
                 name="new_item"
@@ -115,18 +115,18 @@ export default class List extends React.Component {
                 required
               ></input>
 
-              <button className="submit-button">
+              <button className="List__button">
                 <FontAwesomeIcon icon={faPlus} />
               </button>
             </form>
           </li>
-          <li className="items">
-            <form className="item-name" onSubmit={this.handleImportTemplate}>
+          <li className="List__li">
+            <form className="List__form" onSubmit={this.handleImportTemplate}>
               <select onChange={this.handleDropdownChange}>
                 <option>Add Items From Template...</option>
                 {templateNames}
               </select>
-              <button className="submit-button">
+              <button className="List__button">
                 <FontAwesomeIcon icon={faPlus} />
               </button>
             </form>

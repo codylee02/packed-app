@@ -1,33 +1,51 @@
-.template-name {
+.TemplateList__li {
   display: flex;
   justify-content: space-between;
-  margin: 0.1em;
-  padding: 0.2em;
+  margin: 0.1rem;
+  padding: 0.2rem;
   list-style: none;
+  text-decoration: none;
   border: 1px solid black;
-  border-radius: 0.1em;
-  font-size: 1em;
+  border-radius: 0.1rem;
+  font-size: 1.2rem;
   align-items: center;
 }
 
-.template-name__count {
-  font-size: 0.7em;
+.TemplateList__count {
+  font-size: 1rem;
   font-style: italic;
   color: grey;
-  width: 4%;
+  padding-right: 5px;
 }
 
-.template-name__link {
+.TemplateList__link {
   text-decoration: none;
   color: inherit;
   flex-grow: 1;
   text-align: left;
 }
 
-.template-name__delete-button {
-  color: lightgray;
+.TemplateList__delete-button {
+  display: inline-block;
+  border: none;
+  padding: 0;
+  margin-right: 5px;
+  text-decoration: none;
+  background: 0;
+  color: #190ce8;
+  font-family: sans-serif;
+  font-size: 1.3rem;
+  cursor: pointer;
+  text-align: center;
+  -webkit-appearance: none;
+  -moz-appearance: none;
 }
 
-.template-name__delete-button:hover {
-  cursor: pointer;
+.TemplateList__delete-button:active {
+  transform: scale(0.99);
+}
+
+.TemplateList__controls {
+  display: flex;
+  align-items: center;
 }

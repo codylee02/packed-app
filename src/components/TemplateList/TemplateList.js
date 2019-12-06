@@ -29,17 +29,18 @@ export default class TemplateList extends React.Component {
 
   render() {
     return (
-      <li className="template-name">
-        <Link to={`/template/${this.props.id}`} className="template-name__link">
-          <div className="template-name__title">{this.props.name}</div>
+      <li className="TemplateList__li">
+        <Link to={`/template/${this.props.id}`} className="TemplateList__link">
+          <div className="TemplateList__title">{this.props.name}</div>
         </Link>
-
-        <div className="template-name__count">{this.state.totalItemCount}</div>
-        <div
-          className="template-name__delete-button"
-          onClick={this.handleDeleteClick}
-        >
-          <FontAwesomeIcon icon={faTrashAlt} />
+        <div className="TemplateList__controls">
+          <div className="TemplateList__count">{this.state.totalItemCount}</div>
+          <button
+            className="TemplateList__delete-button"
+            onClick={this.handleDeleteClick}
+          >
+            <FontAwesomeIcon icon={faTrashAlt} />
+          </button>
         </div>
       </li>
     );

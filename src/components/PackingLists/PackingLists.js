@@ -39,21 +39,20 @@ export default class PackingLists extends React.Component {
 
   render() {
     return (
-      <li className="list-name">
-        <Link to={`/list/${this.props.id}`} className="list-name__link">
-          <div className="list-name__title">{this.props.name}</div>{" "}
+      <li className="PackingLists__li">
+        <Link to={`/list/${this.props.id}`} className="PackingLists__link">
+          <div className="PackingLists__title">{this.props.name}</div>{" "}
         </Link>
-        <div className="list-controls">
-        <div className="list-name__count">
+        <div className="PackingLists__controls">
+          <div className="PackingLists__count">
             {this.state.packedItemCount}/{this.state.totalItemCount}
           </div>
-          <div
-            className="list-name__delete-button"
+          <button
+            className="PackingLists__delete-button"
             onClick={this.handleDeleteClick}
           >
             <FontAwesomeIcon icon={faTrashAlt} />
-          </div>
-         
+          </button>
         </div>
       </li>
     );

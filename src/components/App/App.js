@@ -42,18 +42,12 @@ class App extends React.Component {
 
         <PrivateRoute
           path={"/list/:id"}
-          component={props => (
-            <List listType="lists" {...props} itemsFrom={"listItems"} />
-          )}
+          component={props => <List {...props} itemsFrom={"listItems"} />}
         />
         <PrivateRoute
           path={"/template/:id"}
           component={props => (
-            <Template
-              listType="templates"
-              {...props}
-              itemsFrom={"templateItems"}
-            />
+            <Template {...props} itemsFrom={"templateItems"} />
           )}
         />
       </main>

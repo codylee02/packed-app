@@ -1,7 +1,7 @@
 .Nav {
   display: flex;
   justify-content: center;
-  background-color: #aaa;
+  background-color: #5401ff;
   position: fixed;
   bottom: 0;
   margin-top: auto;
@@ -20,9 +20,15 @@
   width: 50%;
   font-size: 40px;
   color: white;
-  border: 1px solid black;
+  text-decoration: none;
+}
+
+.nav-buttons:hover {
+  color: #e20dff;
+  cursor: pointer;
 }
 
 .nav-label {
-  font-size: 0.3em;
+  font-size: 1rem;
+  text-decoration: none;
 }

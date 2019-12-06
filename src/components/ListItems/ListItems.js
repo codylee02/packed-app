@@ -28,7 +28,8 @@ export default class ListItems extends React.Component {
   };
 
   render() {
-    let cssClass = this.state.packed === true ? "items packed" : "items";
+    let cssClass =
+      this.state.packed === true ? "ListItems__li--packed" : "ListItems__li";
     const checkBox =
       this.state.packed === true ? (
         <FontAwesomeIcon icon={faCheckSquare} color="green" />
@@ -41,10 +42,13 @@ export default class ListItems extends React.Component {
         <div className="ListItems__checkbox" onClick={this.handleItemClick}>
           {checkBox}
         </div>
-        <div className="item-name" onClick={this.handleItemClick}>
+        <div className="ListItems__name" onClick={this.handleItemClick}>
           {this.props.item.name}
         </div>
-        <div className="item-control-bar" onClick={this.handleDeleteClick}>
+        <div
+          className="ListItems__control-bar"
+          onClick={this.handleDeleteClick}
+        >
           <FontAwesomeIcon icon={faTrashAlt} />
         </div>
       </li>

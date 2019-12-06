@@ -5,6 +5,7 @@ import PackingLists from "../../components/PackingLists/PackingLists";
 import listApiService from "../../services/list-api-service";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import Title from "../../components/Title/Title";
 
 export default class Lists extends React.Component {
   constructor(props) {
@@ -46,7 +47,7 @@ export default class Lists extends React.Component {
       ? this.state.lists.map(list => (
           <PackingLists
             handleDeleteList={this.handleDeleteList}
-            className="list-name"
+            className="PackingLists"
             {...list}
             key={list.id}
           />
@@ -54,22 +55,30 @@ export default class Lists extends React.Component {
       : null;
 
     return (
-      <ul className="Lists">
-        <li className="list-name">
-          <form className="new-list-form" onSubmit={this.handleSubmit}>
-            <input
-              name="new_list"
-              type="text"
-              placeholder="New List..."
-              required
-            ></input>
-            <button type="submit" className="new-list">
-              <FontAwesomeIcon icon={faPlus} />
-            </button>
-          </form>
-        </li>
-        {lists}
-      </ul>
+      <>
+        <Title listName={"Lists"} />
+        <div className="PackingListsTab">
+          <ul className="PackingListsTab__ul">
+            <li className="PackingListsTab__li">
+              <form
+                className="PackingListsTab__form"
+                onSubmit={this.handleSubmit}
+              >
+                <input
+                  name="new_list"
+                  type="text"
+                  placeholder="New List..."
+                  required
+                ></input>
+                <button type="submit" className="PackingListsTab__button">
+                  <FontAwesomeIcon icon={faPlus} />
+                </button>
+              </form>
+            </li>
+            {lists}
+          </ul>
+        </div>
+      </>
     );
   }
 }
