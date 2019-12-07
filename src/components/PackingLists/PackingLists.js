@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import listApiService from "../../services/list-api-service";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -39,10 +39,10 @@ export default class PackingLists extends React.Component {
 
   render() {
     return (
-      <li className="PackingLists__li">
-        <Link to={`/list/${this.props.id}`} className="PackingLists__link">
+      <li className={`PackingLists__li`}>
+        <NavLink to={`/list/${this.props.id}`} className="PackingLists__link">
           <div className="PackingLists__title">{this.props.name}</div>{" "}
-        </Link>
+        </NavLink>
         <div className="PackingLists__controls">
           <div className="PackingLists__count">
             {this.state.packedItemCount}/{this.state.totalItemCount}

@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import templateApiService from "../../services/template-api-service";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -30,9 +30,12 @@ export default class TemplateList extends React.Component {
   render() {
     return (
       <li className="TemplateList__li">
-        <Link to={`/template/${this.props.id}`} className="TemplateList__link">
+        <NavLink
+          to={`/template/${this.props.id}`}
+          className="TemplateList__link"
+        >
           <div className="TemplateList__title">{this.props.name}</div>
-        </Link>
+        </NavLink>
         <div className="TemplateList__controls">
           <div className="TemplateList__count">{this.state.totalItemCount}</div>
           <button

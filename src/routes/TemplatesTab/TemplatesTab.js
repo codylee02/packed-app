@@ -61,27 +61,25 @@ export default class Templates extends React.Component {
       : null;
 
     return (
-      <>
+      <div className="TemplatesTab">
         <Title listName={"Templates"} />
-        <div className="TemplatesTab">
-          <ul className="TemplatesTab__ul">
-            <li className="TemplatesTab__li">
-              <form className="TemplatesTab__form" onSubmit={this.handleSubmit}>
-                <input
-                  name="new_template"
-                  type="text"
-                  placeholder="New Template..."
-                  required
-                ></input>
-                <button type="submit" className="TemplatesTab__button">
-                  <FontAwesomeIcon icon={faPlus} />
-                </button>
-              </form>
-            </li>
-            {templates}
-          </ul>
-        </div>
-      </>
+        <ul className="TemplatesTab__ul">
+          <li className="TemplatesTab__li">
+            <form className="TemplatesTab__form" onSubmit={this.handleSubmit}>
+              <input
+                name="new_template"
+                type="text"
+                placeholder="New Template..."
+                required
+              ></input>
+              <button type="submit" className="TemplatesTab__button">
+                <FontAwesomeIcon icon={faPlus} />
+              </button>
+            </form>
+          </li>
+          {templates}
+        </ul>
+      </div>
     );
   }
 }

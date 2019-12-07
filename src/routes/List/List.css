@@ -1,4 +1,8 @@
 .List {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  overflow-y: scroll;
   display: flex;
   flex-direction: column;
   padding-bottom: 10px;
@@ -69,4 +73,24 @@
 .add-item svg {
   float: left;
   margin-right: 30px;
+}
+
+@media only screen and (min-width: 768px) {
+  .List {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  .List .Title__h2 {
+    background: #e20dff;
+    left: auto;
+    right: 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .List,
+  .List .Title__h2 {
+    width: 67%;
+  }
 }

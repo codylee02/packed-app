@@ -19,23 +19,32 @@ export default function Nav(props) {
 
   return (
     <nav className="Nav">
-      <Link to={"/lists"} className="nav-buttons">
+      <Link to={"/lists"} className="nav-buttons" id="PackingListsButton">
         <div className="nav-icon">
           <FontAwesomeIcon icon={faList} className="nav-icons" />
+
+          <div className="nav-label">Packing Lists</div>
         </div>
-        <div className="nav-label">Packing Lists</div>
       </Link>
-      <Link to="/templates" className="nav-buttons">
+
+      <Link to="/templates" className="nav-buttons" id="TemplatesButton">
         <div className="nav-icon">
           <FontAwesomeIcon icon={faCopy} className="nav-icons" />
+
+          <div className="nav-label">Templates</div>
         </div>
-        <div className="nav-label">Templates</div>
       </Link>
-      <Link onClick={handleLogoutClick} to="/" className="nav-buttons">
+      <Link
+        onClick={handleLogoutClick}
+        to="/"
+        className="nav-buttons"
+        id="LogoutButton"
+      >
         <div className="nav-icon">
           <FontAwesomeIcon icon={faSignOutAlt} className="nav-icons" />
+
+          <div className="nav-label">Logout</div>
         </div>
-        <div className="nav-label">Logout</div>
       </Link>
     </nav>
   );

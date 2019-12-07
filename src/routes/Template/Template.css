@@ -1,4 +1,7 @@
 .Template {
+  top: 0;
+  bottom: 0;
+  overflow-y: scroll;
   display: flex;
   flex-direction: column;
   padding-bottom: 10px;
@@ -47,6 +50,7 @@
   font-size: 1.2rem;
   overflow: hidden;
   color: inherit;
+  text-overflow: ellipsis;
 }
 
 .Template__button {
@@ -68,4 +72,22 @@
 .add-item svg {
   float: left;
   margin-right: 30px;
+}
+
+@media only screen and (min-width: 768px) {
+  .Template {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  .Template .Title__h2 {
+    background: #e20dff;
+    left: auto;
+    right: 0;
+  }
+  .Template,
+  .Template .Title__h2 {
+    width: 67%;
+  }
 }

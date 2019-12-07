@@ -4,6 +4,9 @@
   padding-bottom: 10px;
   margin-top: 3.3rem;
 }
+.active {
+  font-weight: bold;
+}
 
 .PackingListsTab__ul {
   display: flex;
@@ -30,7 +33,6 @@
   display: flex;
   justify-content: space-between;
   flex-grow: 1;
-
   list-style: none;
   text-decoration: none;
   font-size: 1.2rem;
@@ -61,4 +63,17 @@
 
 .PackingListsTab__button:active {
   transform: scale(0.99);
+}
+
+@media only screen and (min-width: 768px) {
+  .PackingListsTab,
+  .PackingListsTab .Title__h2 {
+    width: 33%;
+  }
+  .PackingListsTab {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    overflow-y: scroll;
+  }
 }

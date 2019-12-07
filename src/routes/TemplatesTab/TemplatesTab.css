@@ -5,6 +5,10 @@
   margin-top: 3.3rem;
 }
 
+.active {
+  font-weight: bold;
+}
+
 .TemplatesTab__ul {
   display: flex;
   flex-direction: column;
@@ -60,4 +64,17 @@
 
 .TemplatesTab__button:active {
   transform: scale(0.99);
+}
+
+@media only screen and (min-width: 768px) {
+  .TemplatesTab,
+  .TemplatesTab .Title__h2 {
+    width: 33%;
+  }
+  .TemplatesTab {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    overflow-y: scroll;
+  }
 }

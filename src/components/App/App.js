@@ -6,8 +6,8 @@ import PrivateRoute from "../Utils/PrivateRoute";
 import Nav from "../Nav/Nav";
 import PackingListsTab from "../../routes/PackingListsTab/PackingListsTab";
 import TemplatesTab from "../../routes/TemplatesTab/TemplatesTab";
-import List from "../List/List";
-import Template from "../Template/Template";
+import List from "../../routes/List/List";
+import Template from "../../routes/Template/Template";
 import LandingPage from "../../routes/LandingPage/LandingPage";
 import RegistrationPage from "../../routes/RegistrationPage/RegistrationPage";
 import LoginPage from "../../routes/LoginPage/LoginPage";
@@ -29,14 +29,13 @@ class App extends React.Component {
         <Switch>
           <PublicOnlyRoute path={"/login"} component={LoginPage} />
           <PublicOnlyRoute path={"/register"} component={RegistrationPage} />
-
           <PrivateRoute path="/lists" component={Nav} />
           <PrivateRoute path="/list" component={Nav} />
           <PrivateRoute path="/templates" component={Nav} />
           <PrivateRoute path="/template" component={Nav} />
         </Switch>
-        <Route exact path="/" component={LandingPage} />
 
+        <Route exact path="/" component={LandingPage} />
         <PrivateRoute path="/lists" component={() => <PackingListsTab />} />
         <PrivateRoute path="/templates" component={() => <TemplatesTab />} />
 

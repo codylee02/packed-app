@@ -55,30 +55,28 @@ export default class Lists extends React.Component {
       : null;
 
     return (
-      <>
+      <div className="PackingListsTab">
         <Title listName={"Lists"} />
-        <div className="PackingListsTab">
-          <ul className="PackingListsTab__ul">
-            <li className="PackingListsTab__li">
-              <form
-                className="PackingListsTab__form"
-                onSubmit={this.handleSubmit}
-              >
-                <input
-                  name="new_list"
-                  type="text"
-                  placeholder="New List..."
-                  required
-                ></input>
-                <button type="submit" className="PackingListsTab__button">
-                  <FontAwesomeIcon icon={faPlus} />
-                </button>
-              </form>
-            </li>
-            {lists}
-          </ul>
-        </div>
-      </>
+        <ul className="PackingListsTab__ul">
+          <li className="PackingListsTab__li">
+            <form
+              className="PackingListsTab__form"
+              onSubmit={this.handleSubmit}
+            >
+              <input
+                name="new_list"
+                type="text"
+                placeholder="New List..."
+                required
+              ></input>
+              <button type="submit" className="PackingListsTab__button">
+                <FontAwesomeIcon icon={faPlus} />
+              </button>
+            </form>
+          </li>
+          {lists}
+        </ul>
+      </div>
     );
   }
 }
