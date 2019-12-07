@@ -3,6 +3,9 @@ import React from "react";
 import LandingPageNav from "../../components/LandingPageNav/LandingPageNav";
 import RegistrationForm from "../../components/RegistrationForm/RegistrationForm";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBoxOpen } from "@fortawesome/free-solid-svg-icons";
+
 import "./LandingPage.css";
 
 export default function LandingPage(props) {
@@ -16,32 +19,30 @@ export default function LandingPage(props) {
       <LandingPageNav />
       <header role="banner">
         <h1>PAKD</h1>
+        <h1>
+          <FontAwesomeIcon icon={faBoxOpen} color="#5401ff" />
+        </h1>
         <h2>Never forget to pack your stuff</h2>
       </header>
       <section>
-        <a href="https://placeholder.com">
-          <img src="https://via.placeholder.com/150" alt="placeholder"></img>
-        </a>
-        <p>[image placeholder for templates]</p>
+        <img
+          className="LandingPage__img"
+          src={require("./images/templates-tab.png")}
+          alt="templates example"
+        ></img>
         <p>Create templates for commonly packed items</p>
       </section>
 
       <section>
-        <a href="https://placeholder.com">
-          <img src="https://via.placeholder.com/150" alt="placeholder"></img>
-        </a>
-        <p>[image placeholder for checking off items]</p>
-        <p>Check off items as you gather them</p>
-      </section>
-
-      <section>
-        <a href="https://placeholder.com">
-          <img src="https://via.placeholder.com/150" alt="placeholder"></img>
-        </a>
+        <img
+          className="LandingPage__img"
+          src={require("./images/list-example.png")}
+          alt="checklist example"
+        ></img>
         <p>
-          [image placeholder of someone walking out the door with a backpack]
+          Check off items as you gather them and walk out the door ready for
+          your day
         </p>
-        <p>Walk out the door ready for your day</p>
       </section>
 
       <section className="RegistrationPage">
