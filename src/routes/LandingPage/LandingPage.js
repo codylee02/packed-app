@@ -19,32 +19,33 @@ export default function LandingPage(props) {
       <LandingPageNav />
       <header role="banner">
         <h1>PAKD</h1>
-        <h1>
-          <FontAwesomeIcon icon={faBoxOpen} color="#5401ff" />
-        </h1>
         <h2>Never forget to pack your stuff</h2>
+        <div className="LandingPage__icon">
+          <FontAwesomeIcon icon={faBoxOpen} color="#5401ff" />
+        </div>
       </header>
-      <section>
-        <img
-          className="LandingPage__img"
-          src={require("./images/templates-tab.png")}
-          alt="templates example"
-        ></img>
-        <p>Create templates for commonly packed items</p>
-      </section>
+      <div className="LandingPage__app-info-container">
+        <section>
+          <img
+            className="LandingPage__img"
+            src={require("./images/templates-tab.png")}
+            alt="templates example"
+          ></img>
+          <p>Create templates for commonly packed items</p>
+        </section>
 
-      <section>
-        <img
-          className="LandingPage__img"
-          src={require("./images/list-example.png")}
-          alt="checklist example"
-        ></img>
-        <p>
-          Check off items as you gather them and walk out the door ready for
-          your day
-        </p>
-      </section>
-
+        <section>
+          <img
+            className="LandingPage__img"
+            src={require("./images/list-example.png")}
+            alt="checklist example"
+          ></img>
+          <p>
+            Check off items as you gather them and walk out the door ready for
+            your day
+          </p>
+        </section>
+      </div>
       <section className="RegistrationPage">
         <h2>Sign Up</h2>
         <RegistrationForm onRegistrationSuccess={handleRegistrationSuccess} />

@@ -27,3 +27,30 @@ section {
   max-width: 80%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+
+.LandingPage__icon svg {
+  font-size: 10rem;
+}
+
+@media only screen and (min-width: 768px) {
+  header {
+    padding-bottom: 2%;
+  }
+
+  .LandingPage__app-info-container {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .LandingPage__app-info-container section {
+    max-width: 40%;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .LandingPage__app-info-container {
+    max-width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
