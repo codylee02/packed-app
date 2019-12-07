@@ -11,15 +11,6 @@ const listApiService = {
       !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
     );
   },
-  getListItemCount(listId) {
-    return fetch(`${config.API_BASE_URL}/lists/${listId}`, {
-      headers: {
-        authorization: `bearer ${TokenService.getAuthToken()}`
-      }
-    }).then(res =>
-      !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
-    );
-  },
   postNewList(name) {
     return fetch(`${config.API_BASE_URL}/lists`, {
       method: "POST",

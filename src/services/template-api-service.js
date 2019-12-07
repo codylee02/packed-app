@@ -11,15 +11,6 @@ const templateApiService = {
       !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
     );
   },
-  getTemplateItemCount(templateId) {
-    return fetch(`${config.API_BASE_URL}/templates/${templateId}`, {
-      headers: {
-        authorization: `bearer ${TokenService.getAuthToken()}`
-      }
-    }).then(res =>
-      !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
-    );
-  },
   getTemplateItems(templateId) {
     return fetch(`${config.API_BASE_URL}/templates/${templateId}`, {
       headers: {
