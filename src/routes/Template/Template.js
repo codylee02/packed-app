@@ -20,14 +20,9 @@ export default class Template extends React.Component {
     this.state = {
       error: null,
       templateItems: [],
-      templateName: null,
-      width: window.innerWidth
+      templateName: null
     };
   }
-
-  handleWindowSizeChange = () => {
-    this.setState({ width: window.innerWidth });
-  };
 
   handleSubmit = ev => {
     ev.preventDefault();
@@ -63,9 +58,7 @@ export default class Template extends React.Component {
     templateApiService
       .getTemplateItems(templateId)
       .then(templateItems => this.setState({ ...templateItems }));
-    window.addEventListener("resize", this.handleWindowSizeChange);
   }
-
   componentDidUpdate(prevProps) {
     const templateId = this.props.match.params.id;
     if (templateId !== prevProps.match.params.id) {
@@ -83,11 +76,12 @@ export default class Template extends React.Component {
         key={item.id}
       />
     ));
-    const { width } = this.state;
-    const isMobile = width <= 768;
 
-    if (isMobile) {
-      return (
+    return (
+      <>
+        <div className="Template__sidebar">
+          <TemplatesTab />
+        </div>
         <div className="Template">
           <Title listName={this.state.templateName} />
           <div className="Template__scroll">
@@ -109,33 +103,7 @@ export default class Template extends React.Component {
             </ul>
           </div>
         </div>
-      );
-    } else
-      return (
-        <>
-          <TemplatesTab />
-          <div className="Template">
-            <Title listName={this.state.templateName} />
-            <div className="Template__scroll">
-              <ul className="Template__ul">
-                <li className="Template__li">
-                  <form className="Template__form" onSubmit={this.handleSubmit}>
-                    <input
-                      type="text"
-                      name="new_item"
-                      placeholder="New Item..."
-                      required
-                    ></input>
-                    <button className="Template__button">
-                      <FontAwesomeIcon icon={faPlus} />
-                    </button>
-                  </form>
-                </li>
-                {items}
-              </ul>
-            </div>
-          </div>
-        </>
-      );
+      </>
+    );
   }
 }

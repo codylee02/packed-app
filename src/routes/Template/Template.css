@@ -74,6 +74,10 @@
   margin-right: 30px;
 }
 
+.Template__sidebar {
+  display: none;
+}
+
 @media only screen and (min-width: 768px) {
   .Template {
     position: absolute;
@@ -85,9 +89,17 @@
     background: #e20dff;
     left: auto;
     right: 0;
+    overflow: hidden;
+    white-space: nowrap;
   }
+
   .Template,
   .Template .Title__h2 {
     width: 67%;
+  }
+
+  .Template__sidebar {
+    display: block;
+    width: 33%;
   }
 }

@@ -66,12 +66,7 @@
 }
 
 @media only screen and (min-width: 768px) {
-  .PackingListsTab,
-  .PackingListsTab .Title__h2 {
-    width: 33%;
-  }
   .PackingListsTab {
-    position: absolute;
     top: 0;
     bottom: 0;
     overflow-y: scroll;

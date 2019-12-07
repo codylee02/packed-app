@@ -67,12 +67,7 @@
 }
 
 @media only screen and (min-width: 768px) {
-  .TemplatesTab,
-  .TemplatesTab .Title__h2 {
-    width: 33%;
-  }
   .TemplatesTab {
-    position: absolute;
     top: 0;
     bottom: 0;
     overflow-y: scroll;

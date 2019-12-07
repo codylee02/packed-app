@@ -23,14 +23,9 @@ export default class List extends React.Component {
       listItems: [],
       listName: null,
       templates: [],
-      selectedTemplateId: null,
-      width: window.innerWidth
+      selectedTemplateId: null
     };
   }
-
-  handleWindowSizeChange = () => {
-    this.setState({ width: window.innerWidth });
-  };
 
   handleSubmit = ev => {
     ev.preventDefault();
@@ -86,7 +81,6 @@ export default class List extends React.Component {
     listApiService
       .getListItems(listId)
       .then(listItems => this.setState({ ...listItems }));
-    window.addEventListener("resize", this.handleWindowSizeChange);
   }
 
   componentDidUpdate(prevProps) {
@@ -97,7 +91,6 @@ export default class List extends React.Component {
         .then(listItems => this.setState({ ...listItems }));
     }
   }
-
   render() {
     const items = this.state.listItems
       ? this.state.listItems.map(item => (
@@ -118,86 +111,43 @@ export default class List extends React.Component {
         ))
       : null;
 
-    const { width } = this.state;
-    const isMobile = width <= 768;
-
-    if (isMobile) {
-      return (
+    return (
+      <>
+        <div className="List__sidebar">
+          <PackingListsTab />
+        </div>
         <div className="List">
           <Title listName={this.state.listName} />
-          <div className="List__scroll">
-            <ul className="List__ul">
-              <li className="List__li">
-                <form className="List__form" onSubmit={this.handleSubmit}>
-                  <input
-                    type="text"
-                    name="new_item"
-                    placeholder="New Item..."
-                    required
-                  ></input>
-                  <button className="List__button">
-                    <FontAwesomeIcon icon={faPlus} />
-                  </button>
-                </form>
-              </li>
-              <li className="List__li">
-                <form
-                  className="List__form"
-                  onSubmit={this.handleImportTemplate}
-                >
-                  <select onChange={this.handleDropdownChange}>
-                    <option>Add Items From Template...</option>
-                    {templateNames}
-                  </select>
-                  <button className="List__button">
-                    <FontAwesomeIcon icon={faPlus} />
-                  </button>
-                </form>
-              </li>
-              {items}
-            </ul>
-          </div>
-        </div>
-      );
-    } else
-      return (
-        <>
-          <PackingListsTab />
-          <div className="List">
-            <Title listName={this.state.listName} />
-            <ul className="List__ul">
-              <li className="List__li">
-                <form className="List__form" onSubmit={this.handleSubmit}>
-                  <input
-                    type="text"
-                    name="new_item"
-                    placeholder="New Item..."
-                    required
-                  ></input>
+          <ul className="List__ul">
+            <li className="List__li">
+              <form className="List__form" onSubmit={this.handleSubmit}>
+                <input
+                  type="text"
+                  name="new_item"
+                  placeholder="New Item..."
+                  required
+                ></input>
 
-                  <button className="List__button">
-                    <FontAwesomeIcon icon={faPlus} />
-                  </button>
-                </form>
-              </li>
-              <li className="List__li">
-                <form
-                  className="List__form"
-                  onSubmit={this.handleImportTemplate}
-                >
-                  <select onChange={this.handleDropdownChange}>
-                    <option>Add Items From Template...</option>
-                    {templateNames}
-                  </select>
-                  <button className="List__button">
-                    <FontAwesomeIcon icon={faPlus} />
-                  </button>
-                </form>
-              </li>
-              {items}
-            </ul>
-          </div>
-        </>
-      );
+                <button className="List__button">
+                  <FontAwesomeIcon icon={faPlus} />
+                </button>
+              </form>
+            </li>
+            <li className="List__li">
+              <form className="List__form" onSubmit={this.handleImportTemplate}>
+                <select onChange={this.handleDropdownChange}>
+                  <option>Add Items From Template...</option>
+                  {templateNames}
+                </select>
+                <button className="List__button">
+                  <FontAwesomeIcon icon={faPlus} />
+                </button>
+              </form>
+            </li>
+            {items}
+          </ul>
+        </div>
+      </>
+    );
   }
 }
