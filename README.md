@@ -1,4 +1,4 @@
-## PAKD Client:
+# PAKD Client:
 PAKD allows users to make lists of items to pack.
 Users can also make templates that can be imported into lists.
 
@@ -7,30 +7,14 @@ Users can also make templates that can be imported into lists.
 ## Server:
 [PAKD server GitHub](https://github.com/codylee02/packed-api)
 
-## Framework Used
+## Technology Used
 - React
+- HTML
+- JS
+- CSS
 
-## Scripts:
-- Install dev dependencies:
-```
-npm install
-```
-- Run Tests
-```
-npm test
-```
+## Screenshots:
 
-- Build
-```
-npm run build
-```
-
-- Start in local dev environment
-```
-npm start
-```
-
-- Deploy
-```
-npm run deploy
-```
+<img src="src/routes/LandingPage/images/list-example.png" width="200" alt="list example">
+<img src="src/routes/LandingPage/images/lists-tab.png" width="200" alt="lists tab example">
+<img src="src/routes/LandingPage/images/templates-tab.png" width="200" alt="templates tab example">

@@ -23,6 +23,9 @@ export default function LandingPage(props) {
         <div className="LandingPage__icon">
           <FontAwesomeIcon icon={faBoxOpen} color="#5401ff" />
         </div>
+        <h3>Try out the demo account:</h3>
+        <p>Username: demo-user-account@demo.com</p>
+        <p>Password: password</p>
       </header>
       <div className="LandingPage__app-info-container">
         <section>
